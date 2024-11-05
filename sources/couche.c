@@ -21,3 +21,14 @@ Couche initCouche(int nbNeurones, int nbEntrees) {
     }
     return premier;
 }
+
+void outCouche(Couche couche, int listeEntiers[], int listeSortie[]) {
+    neurone* tmp = couche;
+    listeSortie[0]=outNeurone(tmp,listeEntiers);
+    int i=1;
+    while (tmp->next != NULL) {
+        tmp=tmp->next;
+        listeSortie[i]=outNeurone(tmp,listeEntiers);
+        ++i;
+    }
+}

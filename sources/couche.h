@@ -7,5 +7,6 @@
 
 #include "structures.h"
 Couche initCouche(int nbNeurones, int nbEntrees);
+void outCouche(Couche couche, int listeEntiers[], int listeSortie[]);
 
 #endif //COUCHE_H

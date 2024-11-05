@@ -4,6 +4,8 @@
 
 #ifndef STRUCTURES_H
 #define STRUCTURES_H
+
+
 typedef struct poids {
     int mass;
     struct poids* next;
