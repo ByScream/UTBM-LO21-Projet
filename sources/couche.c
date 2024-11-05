@@ -8,8 +8,14 @@
 
 #include "neurone.h"
 Couche initCouche(int nbNeurones, int nbEntrees) {
-    for (int i=0; i<nbNeurones; i++) {
+    neurone* tmp;
+    printf("---- premier neurone \n");
+    neurone* premier = initNeur(nbEntrees);
+    tmp = premier;
+    for (int i=1; i<nbNeurones; i++) {
         printf("---- %deme neurone \n",i+1);
         neurone* newNeurone = initNeur(nbEntrees);
+        tmp->next=newNeurone;
     }
+    return premier;
 }
