@@ -8,4 +8,6 @@ add_executable(sources main.c
         neurone.c
         neurone.h
         couche.c
-        couche.h)
+        couche.h
+        reseau.c
+        reseau.h)

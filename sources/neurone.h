@@ -6,8 +6,8 @@
 #ifndef NEURONE_H
 #define NEURONE_H
 #include "structures.h"
-void affichagePoids(neurone* neurone);
-neurone* initNeur(int nbEntrees);
+void affichagePoids(Neurone* neurone);
+Neurone* initNeur(int nbEntrees);
 
-int outNeurone(neurone* neurone, int listeEntiers[]);
+int outNeurone(Neurone* neurone, int listeEntiers[]);
 #endif //NEURONE_H

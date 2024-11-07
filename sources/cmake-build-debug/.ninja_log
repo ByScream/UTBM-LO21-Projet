@@ -1,13 +1,12 @@
 # ninja log v6
-4	435	7524349910766522	build.ninja	43714e568b8bf9c9
-15	153	7524344820793571	CMakeFiles/sources.dir/neurone.c.obj	d432df4bbe1367d6
-156	319	7524345067765317	sources.exe	ac0025f8d3a6b724
-7	154	7524345066282158	CMakeFiles/sources.dir/main.c.obj	d4afbd279dbb8afc
-28	158	7524362524047334	CMakeFiles/sources.dir/couche.c.obj	b51917a53466449
-6	175	7524362523843025	CMakeFiles/sources.dir/main.c.obj	d4afbd279dbb8afc
+4	435	7526752326735063	build.ninja	43714e568b8bf9c9
 17	207	7524362523947697	CMakeFiles/sources.dir/neurone.c.obj	d432df4bbe1367d6
-207	378	7524362525847062	sources.exe	359dc7471144ecff
-7	147	7524362955344359	CMakeFiles/sources.dir/couche.c.obj	b51917a53466449
-161	327	7524362956881734	sources.exe	359dc7471144ecff
-17	206	7525015608420046	CMakeFiles/sources.dir/couche.c.obj	b51917a53466449
 207	413	7525015610329200	sources.exe	359dc7471144ecff
+17	206	7525015608420046	CMakeFiles/sources.dir/couche.c.obj	b51917a53466449
+6	175	7524362523843025	CMakeFiles/sources.dir/main.c.obj	d4afbd279dbb8afc
+12	214	7526769850870245	CMakeFiles/sources.dir/main.c.obj	d4afbd279dbb8afc
+23	217	7526769850964933	CMakeFiles/sources.dir/neurone.c.obj	d432df4bbe1367d6
+32	219	7526769851061791	CMakeFiles/sources.dir/couche.c.obj	b51917a53466449
+21	158	7526770139789443	CMakeFiles/sources.dir/reseau.c.obj	f8eb8291a59ff3b9
+11	172	7526770139688732	CMakeFiles/sources.dir/main.c.obj	d4afbd279dbb8afc
+173	417	7526770141307562	sources.exe	d321c7f6d4ba23ef

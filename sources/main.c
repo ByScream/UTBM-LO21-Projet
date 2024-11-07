@@ -1,13 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "structures.h"
-#include "neurone.h"
-#include "couche.h"
+#include "reseau.h"
 
 int main(void) {
-    int nbEntrees=1;
-
-    initCouche(3,4);
+    int listeNeurones[]={4, 2, 3};
+    CreerResNeur(3,listeNeurones);
     return 0;
 }

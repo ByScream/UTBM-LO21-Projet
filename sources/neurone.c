@@ -7,9 +7,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void affichagePoids(neurone* neurone) {
+void affichagePoids(Neurone* neurone) {
     if (neurone !=NULL) {
-        poids* tmp= neurone->poids;
+        Poids* tmp= neurone->poids;
         while(tmp != NULL) {
             printf("%d-->",tmp->mass);
             tmp=tmp->next;
@@ -18,12 +18,12 @@ void affichagePoids(neurone* neurone) {
     printf("\n");
 }
 
-neurone* initNeur(int nbEntrees) {
-    poids* tmp;
+Neurone* initNeur(int nbEntrees) {
+    Poids* tmp;
     int mass;
     printf("Renseignez le premier poids\n");
     scanf("%d",&mass);
-    poids* premier = (poids*) malloc (sizeof (poids));
+    Poids* premier = (Poids*) malloc (sizeof (Poids));
     premier->mass=mass;
     premier->next=NULL;
     tmp=premier;
@@ -31,7 +31,7 @@ neurone* initNeur(int nbEntrees) {
 
         printf("Renseignez le %dème poids\n",i+1);
         scanf("%d",&mass);
-        poids* newPoids = (poids*) malloc (sizeof (poids));
+        Poids* newPoids = (Poids*) malloc (sizeof (Poids));
         newPoids->mass=mass;
         newPoids->next=NULL;
         tmp->next=newPoids;
@@ -40,18 +40,18 @@ neurone* initNeur(int nbEntrees) {
     printf("Veuillez définir le seuil du neurone\n"); // Seuil unique pour chaque neurone ?
     int seuil;
     scanf("%d",&seuil);
-    neurone* newNeurone;
-    newNeurone = (neurone *) malloc (sizeof (neurone));
+    Neurone* newNeurone;
+    newNeurone = (Neurone *) malloc (sizeof (Neurone));
     newNeurone->seuil = seuil;
     newNeurone->poids = premier;
     newNeurone->nbEntrees=nbEntrees;
     return newNeurone;
 }
 
-int outNeurone(neurone* neurone, int listeEntiers[]) {
+int outNeurone(Neurone* neurone, int listeEntiers[]) {
     int size = neurone->nbEntrees;
     int somme = 0;
-    poids* tmp = neurone->poids;
+    Poids* tmp = neurone->poids;
     for (int i=0; i<size; i++) {
         somme += listeEntiers[i]*(tmp->mass);
         tmp = tmp->next;

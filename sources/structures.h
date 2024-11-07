@@ -6,21 +6,26 @@
 #define STRUCTURES_H
 
 
-typedef struct poids {
+typedef struct Poids {
     int mass;
-    struct poids* next;
-} poids;
+    struct Poids* next;
+} Poids;
 
-typedef poids* ListePoids;
+typedef Poids* ListePoids;
 
-typedef struct neurone {
+typedef struct Neurone {
     int seuil;
     int nbEntrees;
-    poids* poids;
-    struct neurone* next;
-} neurone;
+    Poids* poids;
+    struct Neurone* next;
+} Neurone;
 
-typedef neurone* Couche;
+typedef struct Couche {
+    Neurone* neurone;
+    struct Couche* next;
+} Couche;
+
+typedef Couche* Reseau;
 
 
 #endif //STRUCTURES_H

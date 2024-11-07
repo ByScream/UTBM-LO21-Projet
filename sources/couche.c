@@ -7,23 +7,25 @@
 #include <stdio.h>
 
 #include "neurone.h"
-Couche initCouche(int nbNeurones, int nbEntrees) {
-    neurone* tmp;
+Couche* initCouche(int nbNeurones, int nbEntrees) {
     printf("---- premier neurone \n");
-    neurone* premier = initNeur(nbEntrees);
+    Neurone* premier = initNeur(nbEntrees);
     premier->next=NULL;
-    tmp = premier;
+    Neurone* tmp = premier;
     for (int i=1; i<nbNeurones; i++) {
         printf("---- %deme neurone \n",i+1);
-        neurone* newNeurone = initNeur(nbEntrees);
+        Neurone* newNeurone = initNeur(nbEntrees);
         newNeurone->next=NULL;
         tmp->next=newNeurone;
     }
-    return premier;
+    Couche* couche;
+    couche->next=NULL;
+    couche->neurone=premier;
+    return couche;
 }
 
 void outCouche(Couche couche, int listeEntiers[], int listeSortie[]) {
-    neurone* tmp = couche;
+    Neurone* tmp = couche.neurone;
     listeSortie[0]=outNeurone(tmp,listeEntiers);
     int i=1;
     while (tmp->next != NULL) {
