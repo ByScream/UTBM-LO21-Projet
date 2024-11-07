@@ -7,4 +7,6 @@
 #include "structures.h"
 Reseau CreerResNeur(int nbCouche, int listeNbNeuroneParCouche[]);
 
+void propagationAvant(Reseau reseau, int listeEntrees[]);
+
 #endif //RESEAU_H

@@ -23,3 +23,38 @@ Reseau CreerResNeur(int nbCouche, int listeNbNeuroneParCouche[]) {
     }
     return premier;
 }
+
+
+void propagationAvant(Reseau reseau, int listeEntrees[]) {
+    Couche* premiere_couche = reseau;
+    int listeSortiesNeurones[premiere_couche->nbNeurone];
+    outCouche(premiere_couche,listeEntrees,listeSortiesNeurones);
+
+
+    for (int i=0; i<premiere_couche->nbNeurone; ++i) {
+        printf("Sortie première couche neurone %d: %d\n",i+1,listeSortiesNeurones[i]);
+    }
+
+
+    Couche* couche=premiere_couche;
+    while ((couche->next) != NULL) {
+        int listeSortiesNeuronesPrev[couche->nbNeurone];
+        for (int i=0; i < (couche->nbNeurone); ++i) {
+            listeSortiesNeuronesPrev[i]=listeSortiesNeurones[i];
+        }
+        couche=couche->next;
+        int listeSortiesNeurones[couche->nbNeurone];
+        outCouche(couche,listeSortiesNeuronesPrev,listeSortiesNeurones);
+
+        for (int i=0; i<couche->nbNeurone; ++i) {
+            printf("Sortie couche neurone %d: %d\n",i+1,listeSortiesNeurones[i]);
+        }
+        if (couche->next == NULL) {
+            printf("Sortie finale---\n");
+            for (int i=0; i<couche->nbNeurone; ++i) {
+                printf("Sortie %d: %d\n",i+1,listeSortiesNeurones[i]);
+            }
+        }
+    }
+
+}

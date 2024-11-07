@@ -5,6 +5,7 @@
 #include "couche.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "neurone.h"
 Couche* initCouche(int nbNeurones, int nbEntrees) {
@@ -18,14 +19,15 @@ Couche* initCouche(int nbNeurones, int nbEntrees) {
         newNeurone->next=NULL;
         tmp->next=newNeurone;
     }
-    Couche* couche;
+    Couche* couche = (Couche*) malloc (sizeof (Couche));
     couche->next=NULL;
     couche->neurone=premier;
+    couche->nbNeurone=nbNeurones;
     return couche;
 }
 
-void outCouche(Couche couche, int listeEntiers[], int listeSortie[]) {
-    Neurone* tmp = couche.neurone;
+void outCouche(Couche* couche, int listeEntiers[], int listeSortie[]) {
+    Neurone* tmp = couche->neurone;
     listeSortie[0]=outNeurone(tmp,listeEntiers);
     int i=1;
     while (tmp->next != NULL) {

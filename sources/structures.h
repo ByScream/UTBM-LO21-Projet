@@ -22,6 +22,7 @@ typedef struct Neurone {
 
 typedef struct Couche {
     Neurone* neurone;
+    int nbNeurone;
     struct Couche* next;
 } Couche;
 
