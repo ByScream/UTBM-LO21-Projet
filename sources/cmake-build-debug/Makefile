@@ -200,6 +200,30 @@ neurone.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sources.dir\build.make CMakeFiles/sources.dir/neurone.c.s
 .PHONY : neurone.c.s
 
+reseau.obj: reseau.c.obj
+.PHONY : reseau.obj
+
+# target to build an object file
+reseau.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sources.dir\build.make CMakeFiles/sources.dir/reseau.c.obj
+.PHONY : reseau.c.obj
+
+reseau.i: reseau.c.i
+.PHONY : reseau.i
+
+# target to preprocess a source file
+reseau.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sources.dir\build.make CMakeFiles/sources.dir/reseau.c.i
+.PHONY : reseau.c.i
+
+reseau.s: reseau.c.s
+.PHONY : reseau.s
+
+# target to generate assembly for a file
+reseau.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sources.dir\build.make CMakeFiles/sources.dir/reseau.c.s
+.PHONY : reseau.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -218,6 +242,9 @@ help:
 	@echo ... neurone.obj
 	@echo ... neurone.i
 	@echo ... neurone.s
+	@echo ... reseau.obj
+	@echo ... reseau.i
+	@echo ... reseau.s
 .PHONY : help
 
 

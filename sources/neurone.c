@@ -19,14 +19,13 @@ void affichagePoids(Neurone* neurone) {
 }
 
 Neurone* initNeur(int nbEntrees) {
-    Poids* tmp;
     int mass;
     printf("Renseignez le premier poids\n");
     scanf("%d",&mass);
     Poids* premier = (Poids*) malloc (sizeof (Poids));
     premier->mass=mass;
     premier->next=NULL;
-    tmp=premier;
+    Poids* tmp = premier;
     for (int i=1; i<nbEntrees; i++) {
 
         printf("Renseignez le %dème poids\n",i+1);
@@ -40,8 +39,7 @@ Neurone* initNeur(int nbEntrees) {
     printf("Veuillez définir le seuil du neurone\n"); // Seuil unique pour chaque neurone ?
     int seuil;
     scanf("%d",&seuil);
-    Neurone* newNeurone;
-    newNeurone = (Neurone *) malloc (sizeof (Neurone));
+    Neurone* newNeurone = (Neurone *) malloc (sizeof (Neurone));
     newNeurone->seuil = seuil;
     newNeurone->poids = premier;
     newNeurone->nbEntrees=nbEntrees;

@@ -91,6 +91,12 @@
 		<Unit filename="C:/Users/mathi/Documents/GitHub/UTBM-LO21-Projet/sources/neurone.h">
 			<Option target="sources"/>
 		</Unit>
+		<Unit filename="C:/Users/mathi/Documents/GitHub/UTBM-LO21-Projet/sources/reseau.c">
+			<Option target="sources"/>
+		</Unit>
+		<Unit filename="C:/Users/mathi/Documents/GitHub/UTBM-LO21-Projet/sources/reseau.h">
+			<Option target="sources"/>
+		</Unit>
 		<Unit filename="C:/Users/mathi/Documents/GitHub/UTBM-LO21-Projet/sources/structures.h">
 			<Option target="sources"/>
 		</Unit>
