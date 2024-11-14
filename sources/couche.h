@@ -6,7 +6,7 @@
 #define COUCHE_H
 
 #include "structures.h"
-Couche* initCouche(int nbNeurones, int nbEntrees);
-void outCouche(Couche* couche, int listeEntiers[], int listeSortie[]);
+Couche* InitCouche(const int nbNeurones, const int nbEntrees);
+void OutCouche(const Couche* couche, int listeEntiers[], int listeSortie[]);
 
 #endif //COUCHE_H

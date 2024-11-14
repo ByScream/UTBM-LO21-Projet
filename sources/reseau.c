@@ -8,16 +8,16 @@
 
 #include "couche.h"
 
-Reseau CreerResNeur(int nbCouche, int listeNbNeuroneParCouche[]) {
+Reseau CreerResNeur(const int nbCouche, int listeNbNeuroneParCouche[]) {
     printf("---- premiere couche \nNombre d'entrées première couche?\n");
     int nbEntrees;
     scanf("%d",&nbEntrees);
-    Couche* premier = initCouche(listeNbNeuroneParCouche[0],nbEntrees);
+    Couche* premier = InitCouche(listeNbNeuroneParCouche[0],nbEntrees);
     premier->next=NULL;
     Couche* tmp = premier;
     for (int i=1; i<nbCouche; i++) {
         printf("---- %deme couche \n",i+1);
-        Couche* newCouche = initCouche(listeNbNeuroneParCouche[i],listeNbNeuroneParCouche[i-1]);
+        Couche* newCouche = InitCouche(listeNbNeuroneParCouche[i],listeNbNeuroneParCouche[i-1]);
         newCouche->next=NULL;
         tmp->next=newCouche;
     }
@@ -25,10 +25,10 @@ Reseau CreerResNeur(int nbCouche, int listeNbNeuroneParCouche[]) {
 }
 
 
-void propagationAvant(Reseau reseau, int listeEntrees[]) {
+void propagationAvant(const Reseau reseau, int listeEntrees[]) {
     Couche* premiere_couche = reseau;
     int listeSortiesNeurones[premiere_couche->nbNeurone];
-    outCouche(premiere_couche,listeEntrees,listeSortiesNeurones);
+    OutCouche(premiere_couche,listeEntrees,listeSortiesNeurones);
 
 
     for (int i=0; i<premiere_couche->nbNeurone; ++i) {
@@ -44,7 +44,7 @@ void propagationAvant(Reseau reseau, int listeEntrees[]) {
         }
         couche=couche->next;
         int listeSortiesNeurones[couche->nbNeurone];
-        outCouche(couche,listeSortiesNeuronesPrev,listeSortiesNeurones);
+        OutCouche(couche,listeSortiesNeuronesPrev,listeSortiesNeurones);
 
         for (int i=0; i<couche->nbNeurone; ++i) {
             printf("Sortie couche neurone %d: %d\n",i+1,listeSortiesNeurones[i]);

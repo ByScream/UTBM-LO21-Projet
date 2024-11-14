@@ -7,18 +7,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void affichagePoids(Neurone* neurone) {
-    if (neurone !=NULL) {
-        Poids* tmp= neurone->poids;
-        while(tmp != NULL) {
-            printf("%d-->",tmp->mass);
-            tmp=tmp->next;
-        }
-    }
-    printf("\n");
-}
 
-Neurone* initNeur(int nbEntrees) {
+
+Neurone* InitNeur(const int nbEntrees) {
     int mass;
     printf("Renseignez le premier poids\n");
     scanf("%d",&mass);
@@ -27,7 +18,6 @@ Neurone* initNeur(int nbEntrees) {
     premier->next=NULL;
     Poids* tmp = premier;
     for (int i=1; i<nbEntrees; i++) {
-
         printf("Renseignez le %dème poids\n",i+1);
         scanf("%d",&mass);
         Poids* newPoids = (Poids*) malloc (sizeof (Poids));
@@ -46,8 +36,8 @@ Neurone* initNeur(int nbEntrees) {
     return newNeurone;
 }
 
-int outNeurone(Neurone* neurone, int listeEntiers[]) {
-    int size = neurone->nbEntrees;
+int OutNeurone(const Neurone* neurone, int listeEntiers[]) {
+    const int size = neurone->nbEntrees;
     int somme = 0;
     Poids* tmp = neurone->poids;
     for (int i=0; i<size; i++) {

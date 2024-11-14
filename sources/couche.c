@@ -8,14 +8,14 @@
 #include <stdlib.h>
 
 #include "neurone.h"
-Couche* initCouche(int nbNeurones, int nbEntrees) {
+Couche* InitCouche(const int nbNeurones, const int nbEntrees) {
     printf("---- premier neurone \n");
-    Neurone* premier = initNeur(nbEntrees);
+    Neurone* premier = InitNeur(nbEntrees);
     premier->next=NULL;
     Neurone* tmp = premier;
     for (int i=1; i<nbNeurones; i++) {
         printf("---- %deme neurone \n",i+1);
-        Neurone* newNeurone = initNeur(nbEntrees);
+        Neurone* newNeurone = InitNeur(nbEntrees);
         newNeurone->next=NULL;
         tmp->next=newNeurone;
     }
@@ -26,13 +26,13 @@ Couche* initCouche(int nbNeurones, int nbEntrees) {
     return couche;
 }
 
-void outCouche(Couche* couche, int listeEntiers[], int listeSortie[]) {
+void OutCouche(const Couche* couche, int listeEntiers[], int listeSortie[]) {
     Neurone* tmp = couche->neurone;
-    listeSortie[0]=outNeurone(tmp,listeEntiers);
+    listeSortie[0]=OutNeurone(tmp,listeEntiers);
     int i=1;
     while (tmp->next != NULL) {
         tmp=tmp->next;
-        listeSortie[i]=outNeurone(tmp,listeEntiers);
+        listeSortie[i]=OutNeurone(tmp,listeEntiers);
         ++i;
     }
 }

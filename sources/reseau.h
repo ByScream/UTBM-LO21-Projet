@@ -5,8 +5,8 @@
 #ifndef RESEAU_H
 #define RESEAU_H
 #include "structures.h"
-Reseau CreerResNeur(int nbCouche, int listeNbNeuroneParCouche[]);
+Reseau CreerResNeur(const int nbCouche, int listeNbNeuroneParCouche[]);
 
-void propagationAvant(Reseau reseau, int listeEntrees[]);
+void PropagationAvant(const Reseau reseau, int listeEntrees[]);
 
 #endif //RESEAU_H
