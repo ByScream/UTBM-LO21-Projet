@@ -5,6 +5,7 @@
 #include "reseau.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "couche.h"
 
@@ -20,6 +21,7 @@ Reseau CreerResNeur(const int nbCouche, int listeNbNeuroneParCouche[]) {
         Couche* newCouche = InitCouche(listeNbNeuroneParCouche[i],listeNbNeuroneParCouche[i-1]);
         newCouche->next=NULL;
         tmp->next=newCouche;
+        tmp = newCouche;
     }
     return premier;
 }
@@ -27,34 +29,34 @@ Reseau CreerResNeur(const int nbCouche, int listeNbNeuroneParCouche[]) {
 
 void PropagationAvant(const Reseau reseau, int listeEntrees[]) {
     Couche* premiere_couche = reseau;
-    int listeSortiesNeurones[premiere_couche->nbNeurone];
-    OutCouche(premiere_couche,listeEntrees,listeSortiesNeurones);
+    // Tableau pour stocker les sorties de la couche précédente
+    int* listeSortiesNeuronesPrev = (int*)malloc(premiere_couche->nbNeurone * sizeof(int));
 
+    // Calcul des sorties de la première couche
+    OutCouche(premiere_couche, listeEntrees, listeSortiesNeuronesPrev);
 
-    /*for (int i=0; i<premiere_couche->nbNeurone; ++i) {
-        printf("Sortie première couche neurone %d: %d\n",i+1,listeSortiesNeurones[i]);
-    }*/
+    Couche* couche = premiere_couche->next;
+    while (couche != NULL) {
+        // Tableau pour les sorties de la couche actuelle
+        int* listeSortiesNeurones = (int*)malloc(couche->nbNeurone * sizeof(int));
 
+        // Calcul des sorties pour la couche actuelle
+        OutCouche(couche, listeSortiesNeuronesPrev, listeSortiesNeurones);
 
-    Couche* couche=premiere_couche;
-    while ((couche->next) != NULL) {
-        int listeSortiesNeuronesPrev[couche->nbNeurone];
-        for (int i=0; i < (couche->nbNeurone); ++i) {
-            listeSortiesNeuronesPrev[i]=listeSortiesNeurones[i];
-        }
-        couche=couche->next;
-        int listeSortiesNeurones[couche->nbNeurone];
-        OutCouche(couche,listeSortiesNeuronesPrev,listeSortiesNeurones);
+        // Libération de l'ancien tableau des sorties
+        free(listeSortiesNeuronesPrev);
 
-        /*for (int i=0; i<couche->nbNeurone; ++i) {
-            printf("Sortie couche neurone %d: %d\n",i+1,listeSortiesNeurones[i]);
-        }*/
+        // Mise à jour pour la prochaine itération
+        listeSortiesNeuronesPrev = listeSortiesNeurones;
+
+        // Si c'est la dernière couche, afficher les sorties
         if (couche->next == NULL) {
-            printf("Sortie finale---\n");
-            for (int i=0; i<couche->nbNeurone; ++i) {
-                printf("Sortie %d: %d\n",i+1,listeSortiesNeurones[i]);
+            for (int i = 0; i < couche->nbNeurone; ++i) {
+                printf("Sortie du réseau %d: %d\n", i + 1, listeSortiesNeurones[i]);
             }
         }
+        // Passer à la couche suivante
+        couche = couche->next;
     }
 
 }

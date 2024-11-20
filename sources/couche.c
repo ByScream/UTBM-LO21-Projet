@@ -18,6 +18,7 @@ Couche* InitCouche(const int nbNeurones, const int nbEntrees) {
         Neurone* newNeurone = InitNeur(nbEntrees);
         newNeurone->next=NULL;
         tmp->next=newNeurone;
+        tmp=newNeurone;
     }
     Couche* couche = (Couche*) malloc (sizeof (Couche));
     couche->next=NULL;
