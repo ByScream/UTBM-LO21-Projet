@@ -25,15 +25,15 @@ Reseau CreerResNeur(const int nbCouche, int listeNbNeuroneParCouche[]) {
 }
 
 
-void propagationAvant(const Reseau reseau, int listeEntrees[]) {
+void PropagationAvant(const Reseau reseau, int listeEntrees[]) {
     Couche* premiere_couche = reseau;
     int listeSortiesNeurones[premiere_couche->nbNeurone];
     OutCouche(premiere_couche,listeEntrees,listeSortiesNeurones);
 
 
-    for (int i=0; i<premiere_couche->nbNeurone; ++i) {
+    /*for (int i=0; i<premiere_couche->nbNeurone; ++i) {
         printf("Sortie première couche neurone %d: %d\n",i+1,listeSortiesNeurones[i]);
-    }
+    }*/
 
 
     Couche* couche=premiere_couche;
@@ -46,9 +46,9 @@ void propagationAvant(const Reseau reseau, int listeEntrees[]) {
         int listeSortiesNeurones[couche->nbNeurone];
         OutCouche(couche,listeSortiesNeuronesPrev,listeSortiesNeurones);
 
-        for (int i=0; i<couche->nbNeurone; ++i) {
+        /*for (int i=0; i<couche->nbNeurone; ++i) {
             printf("Sortie couche neurone %d: %d\n",i+1,listeSortiesNeurones[i]);
-        }
+        }*/
         if (couche->next == NULL) {
             printf("Sortie finale---\n");
             for (int i=0; i<couche->nbNeurone; ++i) {

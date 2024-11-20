@@ -7,9 +7,9 @@
 int main(void) {
     int listeEntreees[]={1};
     printf("%d\n",OutNeurone(InitNeur(1),listeEntreees));
-    /*int listeEntrees[]={2,8,9,-2,4,3};
-    int listeNeurones[]={3,4,5};
+    int listeEntrees1[]={1,0,0};
+    int listeNeurones[]={4,2,1};
     Reseau reseau = CreerResNeur(3,listeNeurones);
-    propagationAvant(reseau,listeEntrees);*/
+    PropagationAvant(reseau,listeEntrees1);
     return 0;
 }
