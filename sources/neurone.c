@@ -10,29 +10,43 @@
 
 
 Neurone* InitNeur(const int nbEntrees) {
-    int mass;
-    printf("Renseignez le premier poids\n");
-    scanf("%d",&mass);
-    Poids* premier = (Poids*) malloc (sizeof (Poids));
-    premier->mass=mass;
-    premier->next=NULL;
-    Poids* tmp = premier;
-    for (int i=1; i<nbEntrees; i++) {
+
+    //On créé la liste de Poids vide
+    Poids* listePoids = (Poids*) malloc (sizeof (Poids));
+    listePoids = NULL;
+
+    //On initialise la liste de poids en demandant au client
+    Poids* tmp;
+    for (int i=0; i<nbEntrees; i++) {
+        int mass;
         printf("Renseignez le %dème poids\n",i+1);
         scanf("%d",&mass);
         Poids* newPoids = (Poids*) malloc (sizeof (Poids));
         newPoids->mass=mass;
         newPoids->next=NULL;
-        tmp->next=newPoids;
-        tmp=newPoids;
+        if (i==0) { //On initialise la tête de la liste avec le poids créé
+            listePoids = newPoids;
+            tmp = listePoids;
+        } else { //On ajoute en queue de la liste le poids créé
+            tmp->next=newPoids;
+            tmp=newPoids;
+        }
     }
-    printf("Veuillez définir le seuil du neurone\n"); // Seuil unique pour chaque neurone ?
+
+    //On demande le seuil du neurone
+    printf("Veuillez définir le seuil du neurone\n");
     int seuil;
     scanf("%d",&seuil);
+
+    //On créé le neurone
     Neurone* newNeurone = (Neurone *) malloc (sizeof (Neurone));
+
+    //On affecte au neurone son seuil, sa liste de poids, et son nombre d'entrées
     newNeurone->seuil = seuil;
-    newNeurone->poids = premier;
+    newNeurone->poids = listePoids;
     newNeurone->nbEntrees=nbEntrees;
+
+    //On retourne le neurone créé par InitNeur
     return newNeurone;
 }
 
