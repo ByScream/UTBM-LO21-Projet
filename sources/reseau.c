@@ -10,20 +10,32 @@
 #include "couche.h"
 
 Reseau CreerResNeur(const int nbCouche, int listeNbNeuroneParCouche[]) {
-    printf("---- premiere couche \nNombre d'entrées première couche?\n");
-    int nbEntrees;
-    scanf("%d",&nbEntrees);
-    Couche* premier = InitCouche(listeNbNeuroneParCouche[0],nbEntrees);
-    premier->next=NULL;
-    Couche* tmp = premier;
-    for (int i=1; i<nbCouche; i++) {
+
+    //On créé la liste de couche vide
+    Couche* listeCouches = NULL;
+
+    //On initialise la liste des couches en demandant au client
+    Couche* tmp;
+    for (int i=0; i<nbCouche; i++) {
         printf("---- %deme couche \n",i+1);
-        Couche* newCouche = InitCouche(listeNbNeuroneParCouche[i],listeNbNeuroneParCouche[i-1]);
+        Couche* newCouche;
+        if (i==0) { //On initialise la tête de la liste
+            printf("Quel est le nombre d'entrées première couche?\n"); // Comme c'est la première couche, on demande le nb d'entrée
+            int nbEntrees;
+            scanf("%d",&nbEntrees);
+            newCouche = InitCouche(listeNbNeuroneParCouche[0],nbEntrees);
+            listeCouches = newCouche;
+        } else { //On ajoute en queue la nouvelle couche
+            newCouche = InitCouche(listeNbNeuroneParCouche[i],listeNbNeuroneParCouche[i-1]); // Nb d'entrée égale au nombre de neurone de la couche précédente
+            tmp->next=newCouche;
+        }
+
         newCouche->next=NULL;
-        tmp->next=newCouche;
         tmp = newCouche;
     }
-    return premier;
+
+    //On retourne la liste de couche, ce qui correspond au réseau
+    return listeCouches;
 }
 
 

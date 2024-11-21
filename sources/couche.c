@@ -9,31 +9,39 @@
 
 #include "neurone.h"
 Couche* InitCouche(const int nbNeurones, const int nbEntrees) {
-    printf("---- premier neurone \n");
-    Neurone* premier = InitNeur(nbEntrees);
-    premier->next=NULL;
-    Neurone* tmp = premier;
-    for (int i=1; i<nbNeurones; i++) {
+
+    //On créé la liste de neurones vide
+    Neurone* listeNeurones = NULL;
+
+    //On initialise la liste de neurone en demandant au client
+    Neurone* tmp;
+    for (int i=0; i<nbNeurones; i++) {
         printf("---- %deme neurone \n",i+1);
         Neurone* newNeurone = InitNeur(nbEntrees);
         newNeurone->next=NULL;
-        tmp->next=newNeurone;
+        if (i==0) { //On initialise la tête de la liste avec le neurone créé
+            listeNeurones = newNeurone;
+        } else { //On ajoute en queue de la liste le neurone créé
+            tmp->next=newNeurone;
+        }
+
         tmp=newNeurone;
     }
+
+    //On créé la couche
     Couche* couche = (Couche*) malloc (sizeof (Couche));
+
+    //On affecte à la couche sa liste de neurones, et son nombre de neurones
     couche->next=NULL;
-    couche->neurone=premier;
+    couche->neurone=listeNeurones;
     couche->nbNeurone=nbNeurones;
     return couche;
 }
 
 void OutCouche(const Couche* couche, int listeEntiers[], int listeSortie[]) {
     Neurone* tmp = couche->neurone;
-    listeSortie[0]=OutNeurone(tmp,listeEntiers);
-    int i=1;
-    while (tmp->next != NULL) {
-        tmp=tmp->next;
+    for (int i=0; i<(couche->nbNeurone); ++i) {
         listeSortie[i]=OutNeurone(tmp,listeEntiers);
-        ++i;
+        tmp=tmp->next;
     }
 }

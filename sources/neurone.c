@@ -12,8 +12,7 @@
 Neurone* InitNeur(const int nbEntrees) {
 
     //On créé la liste de Poids vide
-    Poids* listePoids = (Poids*) malloc (sizeof (Poids));
-    listePoids = NULL;
+    Poids* listePoids = NULL;
 
     //On initialise la liste de poids en demandant au client
     Poids* tmp;
@@ -26,11 +25,10 @@ Neurone* InitNeur(const int nbEntrees) {
         newPoids->next=NULL;
         if (i==0) { //On initialise la tête de la liste avec le poids créé
             listePoids = newPoids;
-            tmp = listePoids;
         } else { //On ajoute en queue de la liste le poids créé
             tmp->next=newPoids;
-            tmp=newPoids;
         }
+        tmp=newPoids;
     }
 
     //On demande le seuil du neurone
@@ -53,9 +51,15 @@ Neurone* InitNeur(const int nbEntrees) {
 int OutNeurone(const Neurone* neurone, int listeEntiers[]) {
     const int size = neurone->nbEntrees;
     int somme = 0;
+
+    //On récupère la tête de liste de Poids du neurone
     Poids* tmp = neurone->poids;
+
+    //On calcule la somme de la liste d'entrée * le poids correspondant
     for (int i=0; i<size; i++) {
         somme += listeEntiers[i]*(tmp->mass);
+
+        //On passe au poids suivant
         tmp = tmp->next;
     }
     if (somme >= (neurone->seuil)) {
