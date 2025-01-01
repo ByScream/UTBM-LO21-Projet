@@ -23,21 +23,21 @@ int main(void) {
     Reseau reseau = CreerResNeur(3,listeNeurones);
 
     //On fait la propagation avant sur le réseau, pour chaque entrée, et on observe le résultat
-    printf("---- Entrée = [1,0,0] :\n");
+    printf("---- Entree = [1,0,0] :\n");
     PropagationAvant(reseau,listeEntrees1);
-    printf("---- Entrée = [0,1,0] :\n");
+    printf("---- Entree = [0,1,0] :\n");
     PropagationAvant(reseau,listeEntrees2);
-    printf("---- Entrée = [0,0,1] :\n");
+    printf("---- Entree = [0,0,1] :\n");
     PropagationAvant(reseau,listeEntrees3);
-    printf("---- Entrée = [1,1,0] :\n");
+    printf("---- Entree = [1,1,0] :\n");
     PropagationAvant(reseau,listeEntrees4);
-    printf("---- Entrée = [1,0,1] :\n");
+    printf("---- Entree = [1,0,1] :\n");
     PropagationAvant(reseau,listeEntrees5);
-    printf("---- Entrée = [0,1,1] :\n");
+    printf("---- Entree = [0,1,1] :\n");
     PropagationAvant(reseau,listeEntrees6);
-    printf("---- Entrée = [0,0,0] :\n");
+    printf("---- Entree = [0,0,0] :\n");
     PropagationAvant(reseau,listeEntrees7);
-    printf("---- Entrée = [1,1,1] :\n");
+    printf("---- Entree = [1,1,1] :\n");
     PropagationAvant(reseau,listeEntrees8);
 
     return 0;
