@@ -18,7 +18,7 @@ Neurone* InitNeur(const int nbEntrees) {
     Poids* tmp;
     for (int i=0; i<nbEntrees; i++) {
         int mass;
-        printf("Renseignez le %dème poids\n",i+1);
+        printf("Renseignez le %d-eme poids\n",i+1);
         scanf("%d",&mass);
         Poids* newPoids = (Poids*) malloc (sizeof (Poids));
         newPoids->mass=mass;
@@ -32,7 +32,7 @@ Neurone* InitNeur(const int nbEntrees) {
     }
 
     //On demande le seuil du neurone
-    printf("Veuillez définir le seuil du neurone\n");
+    printf("Veuillez definir le seuil du neurone\n");
     int seuil;
     scanf("%d",&seuil);
 

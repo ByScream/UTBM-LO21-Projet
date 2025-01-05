@@ -17,10 +17,10 @@ Reseau CreerResNeur(const int nbCouche, int listeNbNeuroneParCouche[]) {
     //On initialise la liste des couches en demandant au client
     Couche* tmp;
     for (int i=0; i<nbCouche; i++) {
-        printf("---- %deme couche \n",i+1);
+        printf("---- %d-eme couche \n",i+1);
         Couche* newCouche;
         if (i==0) { //On initialise la tête de la liste
-            printf("Quel est le nombre d'entrées première couche?\n"); // Comme c'est la première couche, on demande le nb d'entrée
+            printf("Quel est le nombre d'entrees premiere couche?\n"); // Comme c'est la première couche, on demande le nb d'entrée
             int nbEntrees;
             scanf("%d",&nbEntrees);
             newCouche = InitCouche(listeNbNeuroneParCouche[0],nbEntrees);
@@ -63,9 +63,11 @@ void PropagationAvant(const Reseau reseau, int listeEntrees[]) {
 
         // Si c'est la dernière couche, afficher les sorties
         if (couche->next == NULL) {
+            printf("Sortie du reseau:");
             for (int i = 0; i < couche->nbNeurone; ++i) {
-                printf("Sortie du réseau %d: %d\n", i + 1, listeSortiesNeurones[i]);
+                printf(" %d", listeSortiesNeurones[i]);
             }
+            printf("\n");
         }
         // Passer à la couche suivante
         couche = couche->next;

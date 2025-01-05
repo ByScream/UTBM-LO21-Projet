@@ -5,40 +5,30 @@
 #include "reseau.h"
 
 int main(void) {
+    int nbCouches;
+    printf("Combien de couches il y aura ?\n");
+    scanf("%d",&nbCouches);
+    int listeNeurones[nbCouches];
+    for (int i = 0; i < nbCouches; i++) {
+        printf("Nombre de neurones sur la %d-eme couche ?\n",i+1);
+        scanf("%d",&listeNeurones[i]);
+    }
+    printf("Construction du reseau...\n");
+    Reseau reseau = CreerResNeur(nbCouches,listeNeurones);
 
-    //Paramétrage des différentes entrées possibles
-    int listeEntrees1[]={1,0,0};
-    int listeEntrees2[]={0,1,0};
-    int listeEntrees3[]={0,0,1};
-    int listeEntrees4[]={1,1,0};
-    int listeEntrees5[]={1,0,1};
-    int listeEntrees6[]={0,1,1};
-    int listeEntrees7[]={0,0,0};
-    int listeEntrees8[]={1,1,1};
-
-    //Liste des neurones sur chaque couche
-    int listeNeurones[]={4,2,1};
-
-    //On créé le réseau, en définissant le nombre de couches, et la liste de neurones
-    Reseau reseau = CreerResNeur(3,listeNeurones);
-
-    //On fait la propagation avant sur le réseau, pour chaque entrée, et on observe le résultat
-    printf("---- Entree = [1,0,0] :\n");
-    PropagationAvant(reseau,listeEntrees1);
-    printf("---- Entree = [0,1,0] :\n");
-    PropagationAvant(reseau,listeEntrees2);
-    printf("---- Entree = [0,0,1] :\n");
-    PropagationAvant(reseau,listeEntrees3);
-    printf("---- Entree = [1,1,0] :\n");
-    PropagationAvant(reseau,listeEntrees4);
-    printf("---- Entree = [1,0,1] :\n");
-    PropagationAvant(reseau,listeEntrees5);
-    printf("---- Entree = [0,1,1] :\n");
-    PropagationAvant(reseau,listeEntrees6);
-    printf("---- Entree = [0,0,0] :\n");
-    PropagationAvant(reseau,listeEntrees7);
-    printf("---- Entree = [1,1,1] :\n");
-    PropagationAvant(reseau,listeEntrees8);
+    char refaire='N';
+    do {
+        printf("Donnez l'entree sur laquelle vous voulez effectuer une propagation avant\n");
+        int listeEntrees[reseau->neurone->nbEntrees];
+        for (int i = 0; i < reseau->neurone->nbEntrees; i++) {
+            printf("Saisissez la %d-eme entree\n",i+1);
+            scanf("%d",&listeEntrees[i]);
+        }
+        printf("Resultat:\n");
+        PropagationAvant(reseau,listeEntrees);
+        printf("Voulez vous refaire une propagation avant ? O/N\n");
+        scanf(" %c", &refaire);
+    } while (refaire=='O');
 
     return 0;
 }

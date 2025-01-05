@@ -16,7 +16,7 @@ Couche* InitCouche(const int nbNeurones, const int nbEntrees) {
     //On initialise la liste de neurone en demandant au client
     Neurone* tmp;
     for (int i=0; i<nbNeurones; i++) {
-        printf("---- %deme neurone \n",i+1);
+        printf("---- %d-eme neurone \n",i+1);
         Neurone* newNeurone = InitNeur(nbEntrees);
         newNeurone->next=NULL;
         if (i==0) { //On initialise la tête de la liste avec le neurone créé
